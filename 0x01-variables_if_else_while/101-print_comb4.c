@@ -9,6 +9,7 @@
 int main(void)
 {
 	int digi1, digi2, digi3;
+
 	for (digi1 = 0; digi1 < 9; digi1++)
 	{
 		for (digi2 = digi1 + 1; digi2 < 10; digi2++)
