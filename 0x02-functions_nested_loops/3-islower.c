@@ -3,7 +3,7 @@
 /**
  * _islower - takes in an int
  * @c: an int
- * Return:  islower `equal zero if not a lower class letter else one
+  Return:  islower `equal zero if not a lower class letter else one
  */
 
 int _islower(int c)
