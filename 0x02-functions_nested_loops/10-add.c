@@ -1,7 +1,7 @@
 #include "main.h"
 
  /**
-  * add: add integers together
+  * add - add integers together
   *@i: parameter to be taken
   *@j: parameter to b taken
   * Return: the sum of i and j.
