@@ -2,7 +2,7 @@
 
 /**
  * jack_bauer - 24 hr
- * 
+ *
  *
  */
 void jack_bauer(void)
