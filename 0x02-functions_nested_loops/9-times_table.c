@@ -3,7 +3,7 @@
 /**
  * times_table - prints thr times table of an integer from 0
  *
- * 
+ *
  */
 void times_table(void)
 {
