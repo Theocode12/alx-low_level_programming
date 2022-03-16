@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _islower - takes in an int 
- *
- * Return (0) if 0 and (1) if 1
+ * _islower - takes in an int
+ * @C : an int
+ * Return (islower) equal zero if not a lower class letter else one
  */
 
 int _islower(int c)
@@ -12,7 +12,7 @@ int _islower(int c)
 	char ch = c;
 
 	islower = 0;
-	if ( ch >= 'a' && ch <= 'z' )
+	if (ch >= 'a' && ch <= 'z')
 	{
 		islower = 1;
 	}
