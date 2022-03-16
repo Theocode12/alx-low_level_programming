@@ -7,7 +7,7 @@
  */
 int _isalpha(int c)
 {
-	int isalpha
+	int isalpha;
 
 	isalpha = 0;
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
