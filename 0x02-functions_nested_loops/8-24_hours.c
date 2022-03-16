@@ -1,11 +1,8 @@
 #include "main.h"
 
 /**
- * jack_bauer - 24 hrs
- * @i: counter
- * @j: counter
- * @k: counter
- * @l: counter
+ * jack_bauer - 24 hr
+ * 
  *
  */
 void jack_bauer(void)
@@ -14,7 +11,7 @@ void jack_bauer(void)
 
 	for (l = 0; l < 3; l++)
 	{
-		for (k = 0; k < 4; k++)
+		for (k = 0; k < 10; k++)
 		{
 			for (i = 0; i < 6; i++)
 			{
@@ -27,6 +24,10 @@ void jack_bauer(void)
 					_putchar(j + '0');
 					_putchar('\n');
 				}
+			}
+			if (l == 2 && k == 3)
+			{
+				k = 10;
 			}
 		}
 	}
