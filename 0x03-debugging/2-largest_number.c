@@ -5,7 +5,7 @@
  *@a: first integer
  *@b: 2nd integer
  *@c: 3rd integer
- * Returns: largest number
+ * eturns: largest number
  */
 
 int largest_number(int a, int b, int c)
@@ -25,7 +25,7 @@ int largest_number(int a, int b, int c)
 	{
 		if (b >= a)
 		{
-			return(b);
+			return (b);
 		}
 		else
 		{
