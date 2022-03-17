@@ -2,7 +2,7 @@
 /**
  * main - Prints the first 98 Fibonacci numbers
  *
- *Returns: Always 0
+ *Return: Always 0
  */
 int main(void)
 {
@@ -38,7 +38,7 @@ int main(void)
 		fb1_half1 = fb2_half1;
 		fb1_half2 = fb2_half2;
 		fb2_half1 = half1;
-		fb2_half1 = half2;
+		fb2_half2 = half2;
 	}
 	printf("\n");
 	return (0);
