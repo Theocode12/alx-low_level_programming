@@ -1,12 +1,12 @@
 #include "main.h"
+/**
+ * add - Adds two ints and returns result
+ *@x: number being added
+ *@y: number being added
+ *Return: Always 0.
+ */
 
- /**
-  * add - add integers together
-  *@i: parameter to be taken
-  *@j: parameter to b taken
-  * Return: the sum of i and j.
-  */
-int add(int i, int j)
+int add(int x, int y)
 {
-	return (i + j);
+	return(x + y);
 }
