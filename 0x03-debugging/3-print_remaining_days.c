@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include "main.h"
-
 /**
- * print_remaining_days - takes in parameters for month, day and year)
- * @month - month of the year
- * @day - day
- * @year - year
+ * print_remaining_days - takes in parameters for month, day and year
+ * @month: month of the year
+ * @day: day
+ * @year: year
  */
 void print_remaining_days(int month, int day, int year)
 {
