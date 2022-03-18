@@ -8,7 +8,7 @@
  *@year: year
  *eturn: void
  */
-void print_remaining_days(int month, int day, int year)
+void print_remaining_days(intmonth, int day, int year)
 {
 	if ((year % 4 == 0) || (year % 100 == 0 && year % 400 == 0))
 	{
