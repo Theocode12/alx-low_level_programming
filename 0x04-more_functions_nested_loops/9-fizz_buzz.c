@@ -31,8 +31,11 @@ int main(void)
 		{
 			printf("%d", i);
 		}
-		printf (" ");
+		if (!(i == 100))
+		{
+			printf (" ");
+		}
 		i++;
 	}
-	return 0;
+	return (0);
 }
