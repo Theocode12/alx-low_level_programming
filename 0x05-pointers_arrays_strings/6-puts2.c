@@ -4,7 +4,7 @@
  * puts - takes in a char
  * @str: value passed
  */
-void puts(char *str)
+void puts2(char *str)
 {
 	int i;
 
