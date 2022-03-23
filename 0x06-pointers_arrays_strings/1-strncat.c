@@ -16,7 +16,7 @@ char *_strncat(char *dest, char *src, int n)
 	if (n > 0)
 	{
 		*(dest + i) = ' ';
-		for (j = 0; n > 0; j++)
+		for (j = 0; n > 0 && *(src + j); j++)
 		{
 			*(dest + i) = *(src + j);
 			i++;
