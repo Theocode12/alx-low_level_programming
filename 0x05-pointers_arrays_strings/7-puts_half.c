@@ -8,12 +8,13 @@ void puts_half(char *str)
 {
 	int i, j, k;
 
-	for (i = 0; *(str + i); i++);
+	for (i = 0; *(str + i); i++)
+		;
 	k = i;
 	if (i % 2 == 0)
 		j = i / 2;
 	else
-		j = (i - 1) / 2;
+		j = (i + 1) / 2;
 	k--;
 	for (; j <= k; )
 	{
