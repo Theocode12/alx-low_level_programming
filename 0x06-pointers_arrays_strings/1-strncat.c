@@ -13,12 +13,19 @@ char *_strncat(char *dest, char *src, int n)
 
 	for (i = 0; *(dest + i); i++)
 		;
-	*(dest + i) = ' ';
-	for (j = 0; n > 0; j++)
+	if (n > 0)
 	{
-		*(dest + i) = *(src + j);
-		i++;
-		n--;
+		*(dest + i) = ' ';
+		for (j = 0; n > 0; j++)
+		{
+			*(dest + i) = *(src + j);
+			i++;
+			n--;
+		}
+	}
+	else
+	{
+		*(dest + i) = '\0';
 	}
 	return (dest);
 }
