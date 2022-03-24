@@ -11,24 +11,11 @@ int _strcmp(char *s1, char *s2)
 {
 	int i, j, n;
 
-	j = 0;
-	i = 0;
-	n = 0;
-	while ((*(s1 + i) || *(s2 + i)) && (j < 1))
+	j = n = i = 0;
+	while (*(s1 + i) && (j < 1))
 	{
-		if (*(s1 + i) == *(s2 + i))
-		{
-		}
-		if (*(s1 + i) > *(s2 + i))
-		{
-			n = *(s1 + i) - *(s2 + i);
-			j++;
-		}
-		if (*(s1 + i) < *(s2 + i))
-		{
-			n = *(s1 + i) - *(s2 + i);
-			j++;
-		}
+		n = *(s1 + i) - *(s2 + i);
+		j++;
 		i++;
 	}
 	return (n);
