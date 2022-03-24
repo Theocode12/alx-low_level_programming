@@ -4,6 +4,7 @@
  * _strncpy - copies a string to a particular number of bytes
  * @dest: string 1
  * @src: string 2
+ * @n: number of bytes
  * Return: copies string 2 into string 1
  */
 char *_strncpy(char *dest, char *src, int n)
