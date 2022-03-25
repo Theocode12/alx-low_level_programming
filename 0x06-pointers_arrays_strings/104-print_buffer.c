@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * print_buffer - Print the entire buffer w/ certain conditions
@@ -7,41 +8,35 @@
  */
 void print_buffer(char *b, int size)
 {
-	int i, j;
+	int i, j, l;
 
-	i = 0;
 	if (size <= 0)
-		putchar('\n');
+		printf("\n");
 	else
 	{
-		while (i < size)
+		for (j = 0; j < size; j += 10)
 		{
-			printf("%08x: ",i);
-			j = 0;
-			while (j < 10)
+			printf("%.8x:", j);
+			for (k = j; k < j + 10; k++)
 			{
-				if (j % 2 == 0 && j > 0)
+				if (k % 2 == 0)
 					printf(" ");
-				if (j + i > size - 1)
-					printf(" ");
+				if (k < size)
+					printf("%.2x", *(b + k));
 				else
-					printf("%.2x", b[j + i]);
-				j++;
+					printf(" ");
 			}
-			putchar(' ');
-			j = 0;
-			while (j < 10)
+			printf(" ");
+			for (l = j; l < j + 10; l++)
 			{
-				if (j + i > size - 1)
+				if (l >= size)
 					break;
-				if (b[j + i] >= ' ' && b[j + i] <= '~')
-					putchar(b[j + i]);
+				if (*(b + 1) < 32 || *(b + 1) > 126)
+					printf("%c", '.');
 				else
-					putchar('.');
-				j++;
+					printf("%c", *(b + 1));
 			}
-			putchar('\n');
-			i += 10;
+			printf("\n");
 		}
 	}
-}	
+}
