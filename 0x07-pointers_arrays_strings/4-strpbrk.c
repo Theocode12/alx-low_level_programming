@@ -13,11 +13,11 @@ char *_strpbrk(char *s, char *accept)
 
 	while (s[i])
 	{
-		for(j = 0; accept[j]; j++)
+		for (j = 0; accept[j]; j++)
 		{
 			if (s[i] == accept[j])
 			{
-				return (&s[j]);
+				return (&s[i]);
 			}
 		}
 		i++;
