@@ -1,6 +1,11 @@
 #include "main.h"
 
-/**/
+/**
+ * _strstr - locate a substring
+ * @needle: occurance to find
+ * @haystack: string to search
+ * Return: pointer
+ */
 char *_strstr(char *haystack, char *needle)
 {
 	while (*haystack)
