@@ -10,5 +10,6 @@ int wildcmp(char *s1, char *s2);
 char *wildcard(char *s3, char *s4);
 void _print_rev_recursion(char *s);
 int _sqrt_recursion(int n);
+int _sqrt_val(int i, int n);
 
 #endif
