@@ -1,17 +1,16 @@
-#include "main.h"
+#include "main"
 
- /**
-  * _sqrt_recursion - takes in value of the number to b e squared
-  * @n: the squared value
-  * Return: return the value returned by _sqrt_val function
-  */
-
+/**
+ * _sqrt_recursion - returns the natural square root of a number
+ * @n: interger to find the square root of
+ * Return: natural square root
+ */
 int _sqrt_recursion(int n)
 {
 	if (n == 0)
 		return (0);
 	if (n < 0)
-		return (1);
+		return (-1);
 	return (_sqrt_val(1, n));
 }
 
