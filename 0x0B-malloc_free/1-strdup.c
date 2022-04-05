@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 /**
- * _strdup - returns a pointer to a new string which is a duplicate of the string str
+ * _strdup - returns a pointer to a new string which is a
+ * duplicate of the string str
  * @str: string to be duplicated
  * Return: pointer to the duplicated string
  */
@@ -11,7 +12,7 @@
 char *_strdup(char *str)
 {
 	int i;
-	char* cp_ptr;
+	char *cp_ptr;
 
 	if (str == NULL)
 		return (NULL);
