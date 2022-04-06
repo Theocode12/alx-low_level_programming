@@ -11,7 +11,7 @@ int main(__attribute__((unused))int argc, char *argv[])
 {
 	int i, sum = 0;
 
-	for (i = 1; argv[i]; i++)
+	for (i = 1; argc - 1; i++)
 	{
 		if (!(**(argv + i) >= '0' && (**(argv + i) <= '9')))
 		{
