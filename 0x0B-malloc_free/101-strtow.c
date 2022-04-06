@@ -1,7 +1,11 @@
 #include "main.h"
 #include <stdlib.h>
 
-/**/
+/**
+ * wrdcnt - counts the number of wardds in a string
+ * @s: string to count
+ * Return: int of number of words
+ */
 
 int wrdcnt(char *s)
 {
@@ -21,7 +25,11 @@ int wrdcnt(char *s)
 	return (n);
 }
 
-/**/
+/**
+ * strtow - function returns a pointer to an array of strings
+ * @str: string
+ * Return: returnd pointer
+ */
 
 char **strtow(char *str)
 {
