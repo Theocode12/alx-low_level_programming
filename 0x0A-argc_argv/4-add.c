@@ -7,7 +7,7 @@
  * @argv: list the number of arguements
  * Return: returns 0 if succesful
  */
-int main(__attribute__((unused))int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int i, sum = 0;
 
