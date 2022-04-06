@@ -17,7 +17,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; *(*(a + i) + j); j++, n++)
+		for (j = 0; *(*(av + i) + j); j++, n++)
 			;
 		n++;
 	}
@@ -27,8 +27,8 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; *(*(a + i) + j); j++, k++)
-			*(s + k) = *(*(a + i) + j);
+		for (j = 0; *(*(av + i) + j); j++, k++)
+			*(s + k) = *(*(av + i) + j);
 		*(s + k) = '\n';
 		k++;
 	}
