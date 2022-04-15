@@ -51,11 +51,12 @@ void print_s(va_list ap)
 /**
  * print_all - prints all argurments passed no matter which type
  * @format: list of the arguement passed
+ * struct var - strcture for variable args
  */
 void print_all(const char * const format, ...)
 {
 	int i = 0, j;
-	struct var p[] = {
+	var_t p[] = {
 		{'c', print_c},
 		{'i', print_i},
 		{'f', print_f},
