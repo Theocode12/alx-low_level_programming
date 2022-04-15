@@ -1,5 +1,6 @@
 #ifndef VARIADIC_FUNCTIONS_H
 #define VARIADIC_FUNCTIONS_H
+#include <stdarg.h>
 /**
  * struct var - hold a char and a function pointer in order to execute the task
  * @c: character
