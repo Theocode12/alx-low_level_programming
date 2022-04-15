@@ -20,7 +20,7 @@ void print_c(va_list ap)
 
 void print_i(va_list ap)
 {
-	printf("%i", va_arg(ap, int));
+	printf("%d", va_arg(ap, int));
 }
 
 /**
