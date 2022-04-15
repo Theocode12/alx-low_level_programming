@@ -77,6 +77,7 @@ void print_all(const char * const format, ...)
 				printf("%s", sep);
 				p[j].f(ap);
 				sep = ", ";
+				break;
 			}
 			j++;
 		}
