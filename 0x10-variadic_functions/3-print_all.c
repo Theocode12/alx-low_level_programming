@@ -41,11 +41,12 @@ void print_f(va_list ap)
 void print_s(va_list ap)
 {
 	char *str = va_arg(ap, char *);
+
 	if (str == NULL)
 	{
-		return;
+		str = "(nil)";
 	}
-	printf("%s",str);
+	printf("%s", str);
 }
 /**
  * print_all - prints all argurments passed no matter which type
@@ -81,5 +82,4 @@ void print_all(const char * const format, ...)
 		i++;
 	}
 	printf("\n");
-}
-			
+}	
