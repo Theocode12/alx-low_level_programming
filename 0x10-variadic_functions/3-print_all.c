@@ -56,7 +56,7 @@ void print_s(va_list ap)
 void print_all(const char * const format, ...)
 {
 	int i = 0, j;
-	var_t p[] = {
+	var_p p[] = {
 		{'c', print_c},
 		{'i', print_i},
 		{'f', print_f},
