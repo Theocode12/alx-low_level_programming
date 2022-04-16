@@ -2,9 +2,14 @@
 #include <stdlib.h>
 #include "3-calc.h"
 
-/**/
+/**
+ * main - Entry point
+ * @argc: arguement count
+ * @argv: arguement vector
+ * Return: 0 if sucessfull
+ */
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	int num1, num2, value;
 	int (*f)(int, int);
