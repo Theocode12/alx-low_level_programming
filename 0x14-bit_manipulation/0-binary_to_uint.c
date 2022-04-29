@@ -24,9 +24,9 @@ unsigned int binary_to_uint(const char *b)
 	}
 	for (len = 0; b[len]; len++)
 	{
+		num <<= 1;
 		if (b[len] == '1')
-			num += idx;
-		idx /= 2;
+			num += 1;
 	}
 	return (num);
 }
