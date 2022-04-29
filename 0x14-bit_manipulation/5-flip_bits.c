@@ -13,7 +13,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	unsigned int count = 0, flip;
 
 	flip = n ^ m;
-	while (flip >= 1)
+	while (flip != 0)
 	{
 		if ((flip & 1) == 1)
 			count++;
