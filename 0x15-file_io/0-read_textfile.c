@@ -24,6 +24,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fd < 0)
 		return (0);
 	sz = read(fd, arr, letters);
+	if (!(sz > 0))
+		return (0);
 	arr[sz] = '\0';
 	sz = write(STDOUT_FILENO, arr, sz);
 	if (!(sz > 0))
