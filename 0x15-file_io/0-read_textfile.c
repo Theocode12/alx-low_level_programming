@@ -23,7 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fd = open(filename, O_RDONLY);
 	sz = read(fd, arr, letters);
 	arr[letters] = '\0';
-	dprintf(STDOUT_FILENO, "%s\n", arr);
+	dprintf(STDOUT_FILENO, "%s", arr);
 	close(fd);
 	free(arr);
 	return (sz);
