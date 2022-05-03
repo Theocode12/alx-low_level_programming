@@ -34,39 +34,47 @@ int main(int argc, char **argv)
 
 void _cp(char *file_from, char *file_to)
 {
-	int fd, sz = 1024, f_close;
+	int fd1, fd2, buf_sz = 1024, f_close, sz = 1;
 	char *buff;
 
-	fd = open(file_from, O_RDONLY);
-	if (fd < 0)
+	fd1 = open(file_from, O_RDONLY);
+	if (fd1 < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-	buff = malloc(sz);
-	sz = read(fd, buff, sz);
-	f_close = close(fd);
+	fd2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (fd2 < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		exit(99);
+	}
+	buff = malloc(buf_sz);
+	while (sz != 0)
+	{
+		sz = read(fd1, buff, buf_sz);
+		if (sz == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+			exit(98);
+		}
+		sz = write(fd2, buff, sz);
+		if (sz < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			exit(99);
+		}
+	}
+	f_close = close(fd1);
 	if (f_close < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd1);
 		exit(100);
 	}
-	fd = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (fd < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		exit(99);
-	}
-	sz = write(fd, buff, sz);
-	if (sz < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		exit(99);
-	}
-	f_close = close(fd);
+	f_close = close(fd2);
 	if (f_close < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd2);
 		exit(100);
 	}
 }
