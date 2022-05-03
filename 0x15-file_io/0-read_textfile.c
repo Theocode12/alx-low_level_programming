@@ -17,13 +17,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (!filename)
 		return (0);
-	arr = malloc(sizeof(char) * (letters + 1));
+	arr = malloc(sizeof(char) * (letters));
 	if (!arr)
 		return (0);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	sz = read(fd, arr, letters);
+	arr[sz] = '\0';
 	sz = write(STDOUT_FILENO, arr, sz);
 	if (!(sz > 0))
 		return (0);
