@@ -13,7 +13,7 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	dlistint_t *nw_node, *tmp;
 
 	tmp = *head;
-	nw_node = get_node(n);
+	nw_node = get_Node(n);
 	if (nw_node == NULL)
 		return (NULL);
 	if (*head == NULL)
@@ -29,12 +29,12 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 }
 
 /**
- * get_node - Get a new node
+ * get_Node - Get a new node
  * @n: data element for the node
  * Return: Address of the new node
  */
 
-dlistint_t *get_node(const int n)
+dlistint_t *get_Node(const int n)
 {
 	dlistint_t *new_node;
 
