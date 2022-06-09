@@ -25,22 +25,3 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	*head = nw_node;
 	return (nw_node);
 }
-
-/**
- * get_node - Get a new node
- * @n: data element for the node
- * Return: Address of the new node
- */
-
-dlistint_t *get_node(const int n)
-{
-	dlistint_t *new_node;
-
-	new_node = malloc(sizeof(dlistint_t));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->n = n;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
-}
