@@ -25,7 +25,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	h_node = get_node(dup_key, dup_value);
 	if (!h_node)
+	{
+		free(dup_key);
+		free(dup_value);
 		return (0);
+	}
 	index = key_index((unsigned char *)dup_key, ht->size);
 	if ((ht->array)[index] == NULL)
 	{
