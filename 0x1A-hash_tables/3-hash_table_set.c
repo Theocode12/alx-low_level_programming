@@ -14,48 +14,34 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned int index;
 	hash_node_t *h_node, *tmp_node, *prev_node;
-	char *dup_value, *dup_key;
+	char *dup_value;
 
 	if (key == NULL || strlen(key) == 0 || value == NULL
 		|| ht == NULL || ht->array == NULL || ht->size == 0)
 		return (0);
-	dup_key = strdup(key);
-	if (!dup_key)
-		return (0);
-	dup_value = strdup(value);
-	if (!dup_value)
+	index = key_index((unsigned char *)key, ht->size);
+	tmp_node = (ht->array)[index];
+	while (tmp_node)
 	{
-		free(dup_key);
-		return (0);
-	}
-	h_node = get_node(dup_key, dup_value);
-	if (!h_node)
-	{
-		free(dup_key);
-		free(dup_value);
-		return (0);
-	}
-	index = key_index((unsigned char *)dup_key, ht->size);
-	if ((ht->array)[index] == NULL)
-	{
-		(ht->array)[index] = h_node;
-	}
-	else
-	{
-		tmp_node = (ht->array)[index];
-		while (tmp_node)
+		if (strcmp(tmp_node->key, key) == 0)
 		{
-			if (strcmp(tmp_node->key, dup_key) == 0)
-			{
-				tmp_node->value = dup_value;
-				free(h_node);
-				return (1);
-			}
-			prev_node = tmp_node;
-			tmp_node = tmp_node->next;
+			dup_value = strdup(value);
+			if (!dup_value)
+				return (0);
+			free(tmp_node->value);
+			tmp_node->value = dup_value;
+			return (1);
 		}
-		prev_node->next = h_node;
+		prev_node = tmp_node;
+		tmp_node = tmp_node->next;
 	}
+	h_node = get_node((char *)key, (char *)value);
+	if (!h_node)
+		return (0);
+	if ((ht->array)[index])
+		prev_node->next = h_node;
+	else
+		(ht->array)[index] = h_node;
 	return (1);
 }
 
@@ -69,12 +55,22 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 hash_node_t *get_node(char *key, char *value)
 {
 	hash_node_t *h_node;
+	char *dup_key, *dup_value;
 
+	dup_key = strdup(key);
+	if (dup_key == NULL)
+		return (NULL);
+	dup_value = strdup(value);
+	if (dup_value == NULL)
+	{
+		free(dup_key);
+		return (NULL);
+	}
 	h_node = malloc(sizeof(hash_node_t));
 	if (!h_node)
 		return (NULL);
-	h_node->key = key;
-	h_node->value = value;
+	h_node->key = dup_key;
+	h_node->value = dup_value;
 	h_node->next = NULL;
 	return (h_node);
 }
