@@ -73,7 +73,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 {
-	shash_node_t *h_node, *temp_h, *tmp_node, *prev_h;
+	shash_node_t *h_node, *temp_h, *prev_h;
 	int flag = 0, count = 0;
 
 	h_node = malloc(sizeof(shash_node_t));
@@ -97,18 +97,24 @@ shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 			{
 				if (strcmp(key, temp_h->key) < 0)
 				{
-					tmp_node = temp_h->sprev;
-					h_node->snext = temp_h;
-					h_node->sprev = tmp_node;
-					tmp_node->snext = h_node;
-					flag += 1;
+					if (temp_h->sprev == NULL)
+					{
+						temp_h->sprev = h_node;
+						h_node->snext = temp_h;
+						ht->shead = h_node;
+						flag++;
+					}
+					else
+					{
+						h_node->snext = temp_h;
+						h_node->sprev = temp_h->sprev;
+						temp_h->sprev = h_node;
+						h_node->sprev->snext = h_node;
+						flag += 1;
+					}
 				}
 			}
-			if (flag > 0 && count == 0)
-			{
-				ht->shead = h_node;
-			}
-			if (temp_h->snext == NULL && flag)
+			if (temp_h->snext == NULL && flag > 0)
 			{
 				ht->stail = temp_h;
 				return (h_node);
