@@ -94,7 +94,7 @@ shash_node_t *get_sorted_node(shash_table_t *ht, char *key, char *value)
 }
 
 /**
- * pre_set_ht - links the elements together 
+ * pre_set_ht - links the elements together
  * @ht: hash table
  * @h_node: node to be inserted
  * @key: key
@@ -105,45 +105,42 @@ void pre_set_ht(shash_table_t *ht, shash_node_t *h_node, char *key)
 	shash_node_t *temp_h, *prev_h;
 	int flag = 0, count = 0;
 
-		temp_h = ht->shead;
-		while (temp_h != NULL)
+	temp_h = ht->shead;
+	while (temp_h != NULL)
+	{
+		if (flag == 0)
 		{
-			if (flag == 0)
-			{
-				if (strcmp(key, temp_h->key) < 0)
+			if (strcmp(key, temp_h->key) < 0)
+			{		
+				if (temp_h->sprev == NULL)
 				{
-					
-					if (temp_h->sprev == NULL)
-					{
-						temp_h->sprev = h_node;
-						h_node->snext = temp_h;
-						ht->shead = h_node;
-						flag++;
-						
-					}	
-					else
-					{
-						h_node->snext = temp_h;
-						h_node->sprev = temp_h->sprev;
-						temp_h->sprev = h_node;
-						h_node->sprev->snext = h_node;
-						flag += 1;
-					}
+					temp_h->sprev = h_node;
+					h_node->snext = temp_h;
+					ht->shead = h_node;
+						flag++;		
+				}
+				else
+				{
+					h_node->snext = temp_h;
+					h_node->sprev = temp_h->sprev;
+					temp_h->sprev = h_node;
+					h_node->sprev->snext = h_node;
+					flag += 1;
 				}
 			}
-			if (temp_h->snext == NULL && flag > 0)
-			{
-				
-				ht->stail = temp_h;
-				return;
-			}
-			prev_h = temp_h;
-			temp_h = temp_h->snext;
-			count++;
 		}
-		prev_h->snext = h_node;
-		h_node->sprev = prev_h;
-		ht->stail = h_node;
+		if (temp_h->snext == NULL && flag > 0)
+		{
+			ht->stail = temp_h;
+			return;
+		}
+		prev_h = temp_h;
+		temp_h = temp_h->snext;
+		count++;
+	}
+	prev_h->snext = h_node;
+	h_node->sprev = prev_h;
+	ht->stail = h_node;
 }
 
 
