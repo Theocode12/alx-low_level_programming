@@ -65,7 +65,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- * get_node - create the key-value pair as a list
+ * get_sorted_node - create the key-value pair as a list
  * @ht: hash table
  * @key: key
  * @value: value
@@ -111,13 +111,13 @@ void pre_set_ht(shash_table_t *ht, shash_node_t *h_node, char *key)
 		if (flag == 0)
 		{
 			if (strcmp(key, temp_h->key) < 0)
-			{		
+			{
 				if (temp_h->sprev == NULL)
 				{
 					temp_h->sprev = h_node;
 					h_node->snext = temp_h;
 					ht->shead = h_node;
-						flag++;		
+						flag++;
 				}
 				else
 				{
