@@ -1,6 +1,6 @@
 #include "hash_tables.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**/
 
 void hash_table_delete(hash_table_t *ht)
@@ -14,6 +14,8 @@ void hash_table_delete(hash_table_t *ht)
 		while (h_node)
 		{
 			nxt_node = h_node->next;
+			free(h_node->key);
+			free(h_node->value);
 			free(h_node);
 			h_node = nxt_node;
 		}
