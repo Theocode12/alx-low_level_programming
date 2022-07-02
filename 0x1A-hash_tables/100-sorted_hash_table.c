@@ -1,4 +1,4 @@
-#include "sorted_hash_tables.h"
+#include "hash_tables.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -56,7 +56,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 		tmp_node = tmp_node->next;
 	}
-	h_node = get_node(ht, (char *)key, (char *)value);
+	h_node = get_sorted_node(ht, (char *)key, (char *)value);
 	if (!h_node)
 		return (0);
 	h_node->next = (ht->array)[index];
@@ -66,15 +66,15 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 /**
  * get_node - create the key-value pair as a list
+ * @ht: hash table
  * @key: key
  * @value: value
  * Return: address of node else null
  */
 
-shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
+shash_node_t *get_sorted_node(shash_table_t *ht, char *key, char *value)
 {
-	shash_node_t *h_node, *temp_h, *prev_h;
-	int flag = 0, count = 0;
+	shash_node_t *h_node;
 
 	h_node = malloc(sizeof(shash_node_t));
 	h_node->key = strdup(key);
@@ -89,7 +89,22 @@ shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 		return (h_node);
 	}
 	else
-	{
+		pre_set_ht(ht, h_node, key);
+	return (h_node);
+}
+
+/**
+ * pre_set_ht - links the elements together 
+ * @ht: hash table
+ * @h_node: node to be inserted
+ * @key: key
+ */
+
+void pre_set_ht(shash_table_t *ht, shash_node_t *h_node, char *key)
+{
+	shash_node_t *temp_h, *prev_h;
+	int flag = 0, count = 0;
+
 		temp_h = ht->shead;
 		while (temp_h != NULL)
 		{
@@ -97,13 +112,15 @@ shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 			{
 				if (strcmp(key, temp_h->key) < 0)
 				{
+					
 					if (temp_h->sprev == NULL)
 					{
 						temp_h->sprev = h_node;
 						h_node->snext = temp_h;
 						ht->shead = h_node;
 						flag++;
-					}
+						
+					}	
 					else
 					{
 						h_node->snext = temp_h;
@@ -116,8 +133,9 @@ shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 			}
 			if (temp_h->snext == NULL && flag > 0)
 			{
+				
 				ht->stail = temp_h;
-				return (h_node);
+				return;
 			}
 			prev_h = temp_h;
 			temp_h = temp_h->snext;
@@ -126,9 +144,8 @@ shash_node_t *get_node(shash_table_t *ht, char *key, char *value)
 		prev_h->snext = h_node;
 		h_node->sprev = prev_h;
 		ht->stail = h_node;
-	}
-	return (h_node);
 }
+
 
 /**
  * shash_table_get - get values from keys
