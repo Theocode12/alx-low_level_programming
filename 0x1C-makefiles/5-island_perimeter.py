@@ -43,4 +43,3 @@ def check_tp_dn(grid, i, j):
     if (i + 1) > len(grid) or grid[i + 1][j] == 0:
         perimeter += 1
     return perimeter
-
