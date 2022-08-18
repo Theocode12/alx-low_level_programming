@@ -25,7 +25,7 @@ def check_rt_lt(grid, i, j):
     the grid
     """
     perimeter = 0
-    if (j + 1) > len(grid[i]) or grid[i][j + 1] == 0:
+    if (j + 1) > (len(grid[i]) - 1) or grid[i][j + 1] == 0:
         perimeter += 1
     if (j - 1) < 0 or grid[i][j - 1] == 0:
         perimeter += 1
@@ -40,6 +40,6 @@ def check_tp_dn(grid, i, j):
     perimeter = 0
     if (i - 1) < 0 or grid[i - 1][j] == 0:
         perimeter += 1
-    if (i + 1) > len(grid) or grid[i + 1][j] == 0:
+    if (i + 1) > (len(grid) - 1) or grid[i + 1][j] == 0:
         perimeter += 1
     return perimeter
