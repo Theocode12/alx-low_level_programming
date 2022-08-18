@@ -25,9 +25,9 @@ def check_rt_lt(grid, i, j):
     the grid
     """
     perimeter = 0
-    if (j + 1) <= len(grid[i]) and grid[i][j + 1] == 0:
+    if (j + 1) > len(grid[i]) or grid[i][j + 1] == 0:
         perimeter += 1
-    if (j - 1) >= 0 and grid[i][j - 1] == 0:
+    if (j - 1) < 0 or grid[i][j - 1] == 0:
         perimeter += 1
     return perimeter
 
@@ -38,8 +38,18 @@ def check_tp_dn(grid, i, j):
     the grid
     """
     perimeter = 0
-    if (i - 1) >= 0 and grid[i - 1][j] == 0:
+    if (i - 1) < 0 or grid[i - 1][j] == 0:
         perimeter += 1
-    if (i + 1) <= len(grid) and grid[i + 1][j] == 0:
+    if (i + 1) > len(grid) or grid[i + 1][j] == 0:
         perimeter += 1
     return perimeter
+
+if __name__ == "__main__":
+    grid = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+    ]
+    print(island_perimeter(grid))
