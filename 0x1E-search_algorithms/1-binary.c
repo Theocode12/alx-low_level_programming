@@ -53,5 +53,7 @@ int binary_search(int *array, size_t size, int value)
 {
 	int lst_idx = 0;
 
-	return (bs_algo(array, size - 1, (int) value, lst_idx));
+	if (!(array) || !size)
+		return (-1);
+	return (bs_algo(array, size - 1, (int)value, lst_idx));
 }
