@@ -26,15 +26,16 @@ int min(int bound, int size)
 
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t bound = 1;
+	size_t bound = 1, prev;
 
-	while (array[bound] < value && bound < size)
-	{
+	do {
 		printf("Value checked array[%ld] = [%d]\n", bound, array[bound]);
+		prev = bound;
 		bound *= 2;
-	}
+	} while (array[bound] < value && bound < size);
+
 	printf("Value found between indexes [%ld] and [%d]\n",
-			bound / 2, min(bound, size - 1));
+			prev, min(bound, size - 1));
 	return (bin_sch(array, value, min(bound, size - 1), bound / 2));
 }
 
