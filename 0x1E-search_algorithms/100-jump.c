@@ -1,6 +1,5 @@
 #include "search_algos.h"
 #include <stdio.h>
-#include <math.h>
 
 /**
  * jump_search - implements jump search algo
@@ -14,7 +13,7 @@ int jump_search(int *array, size_t size, int value)
 {
 	size_t step, current, prev;
 
-	if !(array)
+	if (!array)
 		return (-1);
 
 	step = sqrt(size);
