@@ -2,7 +2,7 @@
 #define _SEARCH_ALGO
 #include <stddef.h>
 #include <math.h>
-
+#include <stdlib.h>
 /**
  * struct listint_s - singly linked list
  *
