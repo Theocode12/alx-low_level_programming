@@ -1,61 +1,44 @@
-#include <stdio.h>
 #include "search_algos.h"
-
+#include <stdio.h>
 /**
- * linear_skip - implement jump search with linear skip
- * @list: head of the linked list
+ * linear_skip - searches for node with n field == value
+ * @list: head of linked list
  * @value: value to search for
- * Return: if value found, return node else NULL
+ *
+ * Return: node with n == value or NULL
  */
-
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *prev = list;
+	skiplist_t *current = list, *prev = list;
 
-	list = list->express;
-	while (list)
+	if (!list)
+		return (NULL);
+	current = list->express;
+	if (!current)
+		current = list;
+	while (current)
 	{
-		if (list->n < value)
-		{
-			printf("Value checked at index [%ld] = [%d]\n",
-					list->index, list->n);
-			if (!list->express)
-			{
-				prev = list;
-				break;
-			}
-		}
-
-		else
-		{
-			printf("Value checked at index [%ld] = [%d]\n",
-					list->index, list->n);
+		printf("Value checked at index [%lu] = [%d]\n",
+				current->index, current->n);
+		if (current->n >= value)
 			break;
-		}
-		prev = list;
-		list = list->express;
+		prev = current;
+		current = current->express;
 	}
-
-	if (!list && list->n < value)
+	if (!current)
 	{
-		list = prev;
-		while (list->next)
-			list = list->next;
-		printf("Value found between indexes [%ld] and [%ld]\n",
-				prev->index, list->index);
+		current = prev;
+		while (current->next)
+			current = current->next;
 	}
-
-	else
-		printf("Value found between indexes [%ld] and [%ld]\n",
-				prev->index, list->index);
-
-	do {
-		if (!prev)
-			return (NULL);
-		printf("Value checked at index [%ld] = [%d]\n", prev->index, prev->n);
+	printf("Value found between indexes [%lu] and [%lu]\n",
+		       prev->index, current->index);
+	while (prev)
+	{
+		printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
 		if (prev->n == value)
 			return (prev);
 		prev = prev->next;
-	} while (prev != list);
+	}
 	return (NULL);
 }
